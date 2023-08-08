@@ -40,9 +40,12 @@ services:
     restart: always
   pf:
     hostname: "pathfinder"
-    image: ghcr.io/goryn-clade/pathfinder:latest
+    #image: ghcr.io/goryn-clade/pathfinder:latest
+    build:
+      context: '.'
+      dockerfile: pathfinder.Dockerfile
     env_file:
-    - .env
+      - .env
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
